@@ -1,0 +1,34 @@
+from random import*
+
+game = True
+clock = time.Clock()
+okno = display.set_mode()
+
+from random import*
+shar = gameobjects("gy.png", 240,250)
+dx = -5
+dy = -5
+speedx = 5
+speedy = 5
+while game:
+    for i in event.get():
+        if i.type==QUIT:
+            game = False
+    okno.fill((251,200,180))
+    shar.ris()
+    shar.rect.x = shar.rect.x +speedx*dx
+    shar.rect.y = shar.rect.y +speedy*dy
+    if shar.rect.x <= 0:
+        dx *= -1
+        speedx = randint(3,5)
+        speedy = randint(3,5)
+    if shar.rect.x >= 470:
+        dx *= -1
+        speedy = randint(3,5)
+        speedx = randint(3,5)
+    if shar.rect.y <= 0:
+        dy *= -1
+        speedy = randint(3,5)
+        speedx = randint(3,5)
+    display.update()
+    clock.tick(40)
